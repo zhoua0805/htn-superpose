@@ -1,0 +1,219 @@
+.navbar{
+    /*animation: dropDown 3s forwards;
+    animation-delay: 0s;*/
+    background-color: rgba(255, 255, 255, 0.651);
+    width: 100vw;
+    min-height: 40px;
+    filter: drop-shadow(0px 0.2vw 0.4vw #00000083);
+    backdrop-filter: blur(12px);
+}
+
+.dropdown .dropdown-menu {
+    transition:visibility 0.3s, opacity 0.33s,transform 0.33s;
+    transform-origin: top;
+    transform: translateY(0px) scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+    display: block;
+    overflow: hidden;
+    background-color: rgb(228, 228, 228);    
+}
+
+.dropdown.show .dropdown-menu {
+    transition: visibility 0s, opacity 0.33s,transform 0.33s;
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(100px);
+    
+}
+
+
+.dropdown-menu a {
+    color: black;
+    transition: all 0.2s;
+}
+.dropdown-menu a:hover {
+    transition: all 0.33s;
+}
+
+.navbarIcon{
+    width: 5vw;
+}
+
+.navbarContainer{
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbarLink a, #dropdownButton{
+    background-color: transparent;
+    border-radius: 15px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: color 0.5s, filter 0.5s, background-color 0.5s;
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block;
+    color:#000000;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border 0.5s;
+    text-decoration: none;
+    font-family: AvenirLTStd-Roman;
+}
+
+
+.navbarSelected a{
+    background-color: #6F1E88;
+    color: #ffffff;
+}
+
+.navbarLink a:hover{
+    color:black;
+    border: 2px solid #6F1E88;
+}
+
+.navbarSelected a:hover{
+    color:white;
+}
+  
+.navbarLink a:active{
+    transition: filter 0.2s;
+    filter: drop-shadow(0.1vw 0.1vw 0.5vw rgba(0, 0, 0, 0.384));
+}
+
+.navbarSocialsContainer{
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    position: absolute;
+    float: right;
+    right:30px;
+}
+
+.navbarSocialsContainer a:hover{
+    transition: filter 0.2s;
+    filter: drop-shadow(0.1vw 0.1vw 0.5vw rgba(111, 30, 136, 0.479));
+}
+
+.navbarTitle{
+    position: relative;
+    color: #6F1E88;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-family: Aquire;
+    display:none;
+}
+
+@media only screen and (min-width: 1080px) {
+    .navbarIcon{
+        width: 55px;
+    }
+    
+}
+@media only screen and (max-width: 1080px) {
+    .navbarLink a, #dropdownButton{
+        border-radius: 15px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        padding-right: 9px;
+        padding-left: 9px;
+        margin-left: 6px;
+        margin-right: 6px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .dropdown .dropdown-menu {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .blur{
+        height:46px;
+    }
+
+    .navbarSocialsContainer{
+        display: flex;
+        align-items: center;
+        flex-flow: row wrap;
+        position: absolute;
+        float: right;
+        right:70px;
+    }
+
+    .navbarLink, #dropdownButton{
+        width:100%;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .navbarLink a, #dropdownButton{
+        font-size: 16px;
+    }
+    
+    .navbarIcon{
+        width: 40px;
+    }
+
+    .navbarTitle{
+        display:inline-block;
+    }
+}
+
+.navbarSocialsContainer img{
+    padding-right: 0.2vw;
+    width: calc(20px + 1.2vw);
+}
+
+@keyframes dropDown {
+    0% {
+        transform: translate(0px, -10vw);
+    }
+    75% {
+        transform: translate(0px, 0vw);
+    }
+    100% {
+        transform: translate(0px, 0vw);
+    }
+}
+
+/* #dropdownButton {
+    background-color: transparent;
+    outline: none;
+    border: 2px solid transparent;
+    border-radius: 1vw;
+    transition: 0.2 ease-in-out;
+    padding: 5px 10px;
+    color: black;
+    font-family: AvenirLTStd-Roman;
+    font-size: calc(12px + 0.55vw);
+    padding-bottom: 0.4vw;
+    padding-top: 0.4vw;
+    padding-right: 1.3vw;
+    padding-left: 1.3vw;
+} */
+
+#dropdownButton:hover, #dropdownButton:focus {
+    border: 2px solid #6F1E88;
+    outline: none;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(197, 163, 207);
+}
