@@ -8,6 +8,11 @@ SuperPose was developed using React for the front-end UI and TensorFlow.js to ha
 For a demo of the software, visit https://zhoua0805.github.io/htn-superpose/.
 
 ## Local Usage
-```
+Go the the SuperPose/client folder:
+```cd SuperPose/client```
 
-```
+Install all packages:
+```npm install```
+
+Run the react app:
+```npm run start```
