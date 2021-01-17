@@ -3,20 +3,23 @@ import NavbarComponent from '../components/navbar';
 import Card from 'react-bootstrap/Card';
 import { Container, Col, Row } from 'react-grid-system';
 import '../css/start.css';
-import Icon from "../assets/man.png";
+import Icon1 from "../assets/cat.png";
+import Icon2 from "../assets/cat2.jpg";
+import Icon3 from "../assets/cat3.jpg";
 import ImageUploading from 'react-images-uploading';
 import getSimilarity from '../components/pose-estimator';
 
 
 const posenet = require('@tensorflow-models/posenet');
 
-
+const BODYPARTS = ["nose","leftEye", "rightEye", "leftEar", "rightEar", "leftShoulder", "rightShoulder", "leftElbow", "rightElbow", "leftWrist", "rightWrist", "leftHip", "rightHip",	"leftKnee",	"rightKnee",	"leftAnkle","rightAnkle",]
 
 export default class Image extends Component {
   constructor(props) {
     super(props);
     this.state = { myImage: [],
-                  targetImage: [] };
+                  targetImage: [], 
+                  pose: undefined};
     this.onChangeOne = this.onChangeOne.bind(this);
     this.onChangeTwo = this.onChangeTwo.bind(this);
     this.onChangeRunButton = this.onChangeRunButton.bind(this);
@@ -41,12 +44,30 @@ export default class Image extends Component {
     this.setState({targetImage: imageList});
   }
 
-  onChangeRunButton() {
+  async onChangeRunButton() {
     var myImageElement = this.myImageRef.current;
     var targetImageElement = this.targetImageRef.current;
-    getSimilarity(myImageElement, targetImageElement);
-    // const pose = this.estimatePoseMatch(myImageElement);
-    // console.log(pose);
+    var pose = await getSimilarity(myImageElement, targetImageElement);
+    console.log(pose);
+    const result = {message: "", best: "", worst: "", img: ""}
+    if (pose.result >0.1){
+      result.message = "Needs More Work!"
+      result.img = Icon3;
+    }else if (pose.result > 0.05){
+      result.message = "Almost there!"
+      result.img = Icon2;
+    }else{
+      result.message = "Excellent!"
+      result.img = Icon1;
+    }
+
+    var indexOfMaxValue = pose.error.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    var indexOfMinValue = pose.error.reduce((iMin, x, i, arr) => x > arr[iMin] ? iMin : i, 0);
+
+    console.log(indexOfMaxValue);
+    result.best = BODYPARTS[Math.floor(indexOfMaxValue / 2)];
+    result.worst = BODYPARTS[Math.floor(indexOfMinValue/ 2)];
+    this.setState({pose: result});
   }
 
   async estimatePoseMatch(imageElement) {
@@ -119,6 +140,17 @@ export default class Image extends Component {
 
           <button type="button" class="btn btn-primary btn-lg" onClick={() => this.onChangeRunButton()}>Compare</button>
         </Container>
+        {this.state.pose? <div className = "results"> <Row>
+          <Col>
+          <img src={this.state.pose.img}  width="400"/>
+          </Col>
+          <Col>
+          <h1>{this.state.pose.message} </h1>
+          <h3>Your did great on: {this.state.pose.best}</h3>
+          <h3>Your should improve on: {this.state.pose.worst}</h3>
+          </Col>
+        </Row>
+        </div> :undefined}
       </div>
     )
   }
