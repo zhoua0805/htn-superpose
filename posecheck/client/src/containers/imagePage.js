@@ -64,15 +64,15 @@ export default class Image extends Component {
         <NavbarComponent page="image"/>
         <Container className="start">
           <Row>
-            <Col  className = "column"> Upload 1
+            <Col  className = "column"> Please upload your personal image here
             <ImageUploading
               multiple={false}
               value={this.state.myImage}
               onChange={this.onChangeOne}
               dataURLKey="data_url">
             {({imageList, onImageUpload, onImageRemove, isDragging,dragProps,}) => (
-            <div className="upload__image-wrapper">
-            <button style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
+            <div className="upload__image-wrapper" >
+            <button class="btn btn-primary mybutton" type="button" style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
               Click or Drop here
             </button>
             <br/>
@@ -80,7 +80,7 @@ export default class Image extends Component {
               <div key={index} className="image-item">
                 <img src={image['data_url']} alt="" width="200" ref={this.myImageRef} />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <button class="btn btn-primary removeButton" type="button" onClick={() => onImageRemove(index)}>Remove</button>
                 </div>
               </div>
             ))}
@@ -91,7 +91,7 @@ export default class Image extends Component {
 
 
 
-            <Col  className = "column"> Upload 2
+            <Col  className = "column"> Please upload the pro (target) image here
             <ImageUploading
               multiple={false}
               value={this.state.targetImage}
@@ -99,7 +99,7 @@ export default class Image extends Component {
               dataURLKey="data_url">
             {({imageList, onImageUpload, onImageRemove, isDragging,dragProps,}) => (
             <div className="upload__image-wrapper">
-            <button style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
+            <button class="btn btn-primary mybutton" type="button" style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
               Click or Drop here
             </button>
             <br/>
@@ -107,7 +107,7 @@ export default class Image extends Component {
               <div key={index} className="image-item">
                 <img src={image['data_url']} alt="" width="200" ref={this.targetImageRef} />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <button class="btn btn-primary removeButton" type="button" onClick={() => onImageRemove(index)}>Remove</button>
                 </div>
               </div>
             ))}
@@ -116,10 +116,9 @@ export default class Image extends Component {
       </ImageUploading>
             </Col>
           </Row>
+
+          <button type="button" class="btn btn-primary btn-lg" onClick={() => this.onChangeRunButton()}>Compare</button>
         </Container>
-
-
-        <button onClick={() => this.onChangeRunButton()}>Run</button>
       </div>
     )
   }
