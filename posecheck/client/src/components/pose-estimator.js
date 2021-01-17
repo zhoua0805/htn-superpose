@@ -74,7 +74,7 @@ async function getSimilarity(imageElement1, imageElement2) {
         return positions2;
     });
     const result = L2Distance(pro, user);
-    const error = PercentError(pro, user);
+    const error = percentError(pro, user);
     return result
 }
 
