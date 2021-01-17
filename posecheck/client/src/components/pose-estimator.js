@@ -24,7 +24,7 @@ function L2Distance(vec1, vec2) {
 function percentError(vec1, vec2) {
     let error = [];
     for (let i = 0; i < vec1.length; i++){
-        error[i] = (vec1 - vec2).map(e => e / Math.abs(vec1[i]));
+        error[i] = Math.abs((vec1[i] - vec2[i])/vec1[i]);
     };
     return error
 }
@@ -74,8 +74,7 @@ async function getSimilarity(imageElement1, imageElement2) {
         return positions2;
     });
     const result = L2Distance(pro, user);
-    const error = percentError(pro, user);
-    console.log(error)
+    const error = PercentError(pro, user);
     return result
 }
 
