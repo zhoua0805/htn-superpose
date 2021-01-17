@@ -42,9 +42,9 @@ class NavbarComponent extends Component {
       </div>
       <Navbar.Collapse id="navbar-id" className="justify-content-center">
 
-        <div className={imageSelect} ><NavItem><Link to="/">Image</Link></NavItem></div>
-        <div className={videoSelect}><NavItem><Link to="/video">Video</Link></NavItem></div>
-        <div className={CommunitiesSelect}><NavItem><Link to="/contact">Communities</Link></NavItem></div>
+        <div className={imageSelect} ><NavItem><Link to="/">SuperPose</Link></NavItem></div>
+        {/* <div className={videoSelect}><NavItem><Link to="/video">Video</Link></NavItem></div>
+        <div className={CommunitiesSelect}><NavItem><Link to="/contact">Communities</Link></NavItem></div> */}
       </Navbar.Collapse>     
     </Navbar>
 

@@ -50,10 +50,10 @@ export default class Image extends Component {
     var pose = await getSimilarity(myImageElement, targetImageElement);
     console.log(pose);
     const result = {message: "", best: "", worst: "", img: ""}
-    if (pose.result >0.1){
+    if (pose.result >0.25){
       result.message = "Needs More Work!"
       result.img = Icon3;
-    }else if (pose.result > 0.05){
+    }else if (pose.result > 0.15){
       result.message = "Almost there!"
       result.img = Icon2;
     }else{
@@ -146,8 +146,8 @@ export default class Image extends Component {
           </Col>
           <Col>
           <h1>{this.state.pose.message} </h1>
-          <h3>Your did great on: {this.state.pose.best}</h3>
-          <h3>Your should improve on: {this.state.pose.worst}</h3>
+          <h3>You did great on: {this.state.pose.best}</h3>
+          <h3>You should improve on: {this.state.pose.worst}</h3>
           </Col>
         </Row>
         </div> :undefined}

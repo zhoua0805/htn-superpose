@@ -12,7 +12,7 @@ import Video from './containers/videoPage';
 class App extends Component {
   render() { 
     return (
-      <BrowserRouter history={history}>
+      <BrowserRouter history={history}  basename={process.env.PUBLIC_URL}>
           <div className="container">
             <Switch>
               <Route path="/" exact component={Image}/>
