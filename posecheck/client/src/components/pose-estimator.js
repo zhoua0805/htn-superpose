@@ -21,8 +21,16 @@ function L2Distance(vec1, vec2) {
     return Math.sqrt(2*(1-dpt));
 }
 
+function percentError(vec1, vec2) {
+    let error = [];
+    for (let i = 0; i < vec1.length; i++){
+        error[i] = (vec1 - vec2).map(e => e / Math.abs(vec1[i]));
+    };
+    return error
+}
+
 async function getSimilarity(imageElement1, imageElement2) {
-    let vec1 = await posenet.load().then(function(net) {
+    let pro = await posenet.load().then(function(net) {
         const pose1 = net.estimateSinglePose(imageElement1, {
             flipHorizontal: true
         });
@@ -44,7 +52,7 @@ async function getSimilarity(imageElement1, imageElement2) {
         return positions1
     });
 
-    let vec2 = await posenet.load().then(function(net) {
+    let user = await posenet.load().then(function(net) {
         const pose2 = net.estimateSinglePose(imageElement2, {
             flipHorizontal: true
         });
@@ -65,12 +73,10 @@ async function getSimilarity(imageElement1, imageElement2) {
         positions2 = positions2.map(i => i / magnitude(positions2))
         return positions2;
     });
-    const result = L2Distance(vec1, vec2);
-    console.log(result)
-    console.log(vec1)
-    console.log(vec2)
+    const result = L2Distance(pro, user);
+    const error = percentError(pro, user);
+    console.log(error)
+    return result
 }
-
-
 
 export default getSimilarity;
