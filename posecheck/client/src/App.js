@@ -5,7 +5,8 @@ import {
   Switch,
   Route} from 'react-router-dom';
 import history from './utils/History';
-import Home from './containers/home';
+import Image from './containers/imagePage';
+import Video from './containers/videoPage';
 
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
       <BrowserRouter history={history}>
           <div className="container">
             <Switch>
-              <Route path="/" exact component={Home}/>
+              <Route path="/" exact component={Image}/>
+              <Route path="/video" exact component={Video}/>
             </Switch>
           </div>
           {/* <Footer/> */}

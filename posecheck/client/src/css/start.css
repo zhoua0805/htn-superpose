@@ -1,0 +1,21 @@
+:root {
+    --text-colour: #5D6C89;
+    --primary-colour: #36D6E7;
+    --highlight-colour: #FEB06A;
+    --background-color: #FBF6F3;
+}
+
+.start {
+    margin: 6.75rem 4.25rem;
+    /* font-family: 'Century Gothic'; */
+}
+
+.column {
+    border: 2px solid var(--text-colour);
+    border-radius: 7px;
+    margin: 5rem;
+}
+
+label {
+    font-family: 'AvenirLTStd-Roman';
+}

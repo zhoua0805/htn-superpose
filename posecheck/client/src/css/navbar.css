@@ -1,7 +1,12 @@
+:root {
+    --text-colour: #5D6C89;
+    --primary-colour: #36D6E7;
+    --highlight-colour: #FEB06A;
+    --background-color: #FBF6F3;
+}
+
 .navbar{
-    /*animation: dropDown 3s forwards;
-    animation-delay: 0s;*/
-    background-color: rgba(255, 255, 255, 0.651);
+    background-color: var(--background-colour);
     width: 100vw;
     min-height: 40px;
     filter: drop-shadow(0px 0.2vw 0.4vw #00000083);
@@ -74,13 +79,17 @@
 
 
 .navbarSelected a{
-    background-color: #6F1E88;
-    color: #ffffff;
+    background-color: var(--primary-colour);
+    color: var(--background-color);
+}
+
+.navbarLink a{
+    color:var(--text-colour);
 }
 
 .navbarLink a:hover{
-    color:black;
-    border: 2px solid #6F1E88;
+    color:var(--text-colour);
+    border: 2px solid var(--highlight-colour);
 }
 
 .navbarSelected a:hover{
@@ -108,7 +117,7 @@
 
 .navbarTitle{
     position: relative;
-    color: #6F1E88;
+    color: var(--text-colour);
     font-size: 20px;
     text-align: center;
     width: 100%;
